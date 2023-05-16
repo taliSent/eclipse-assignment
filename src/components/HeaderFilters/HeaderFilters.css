@@ -1,0 +1,26 @@
+.filter1 {
+    transform: translateY(-18%);
+    opacity: 0;
+    animation: fade-in 1s ease-in 0.1s forwards;
+    -webkit-animation: fade-in 1s ease-in 0.1s forwards;
+    -moz-animation: fade-in 1s ease-in 0.1s forwards;
+    -o-animation: fade-in 1s ease-in 0.1s forwards;
+}
+
+.filter2 {
+    width: 100%;
+    transform: translateY(-25%);
+    opacity: 0;
+    animation: fade-in 1.2s ease-in 0.2s forwards;
+    -webkit-animation: fade-in 1.2s ease-in 0.2s forwards;
+    -moz-animation: fade-in 1.2s ease-in 0.2s forwards;
+    -o-animation: fade-in 1.2s ease-in 0.2s forwards;
+}
+
+
+@keyframes fade-in {
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
