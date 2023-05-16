@@ -10,7 +10,7 @@ const App: FC = () => {
   const logic = useAppLogic();
 
   return (
-    <Container maxWidth='lg' sx={{ padding: "3em 0" }}>
+    <Container maxWidth='md' sx={{ padding: "3em 0" }}>
       <Stack direction='column' spacing={3}>
         <Typography className='header' variant='h2' component='h1'>
           Pokemons
