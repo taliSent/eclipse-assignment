@@ -13,7 +13,14 @@ import { FC } from "react";
 import useTableLogic from "src/hooks/useTableLogic";
 import { PmUI } from "src/types/PokemonUI";
 import Row from "./Row";
-
+const styles = {
+  ".MuiToolbar-root": {
+    paddingLeft: "4px",
+  },
+  "&.MuiTablePagination-root": {
+    overflowX: "hidden",
+  },
+};
 const TableContent: FC = () => {
   const {
     handlePageChange,
@@ -50,6 +57,9 @@ const TableContent: FC = () => {
         onPageChange={handlePageChange}
         rowsPerPage={perPage}
         onRowsPerPageChange={handlePageSizeChange}
+        size='small'
+        sx={styles}
+        // sx={{ overflowX: "hidden" }}
       />
     </TableContainer>
   );
