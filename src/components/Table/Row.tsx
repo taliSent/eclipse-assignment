@@ -46,7 +46,7 @@ function Row(props: { row: PmUI }) {
             {row.types.map((type) => (
               <Chip
                 size='small'
-                sx={{ backgroundColor: getTypeColor(type) }}
+                sx={{ backgroundColor: getTypeColor(type), color: "white" }}
                 key={type}
                 label={type}
               />

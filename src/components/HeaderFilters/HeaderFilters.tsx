@@ -70,7 +70,10 @@ const HeaderFilters: FC = () => {
                   <Chip
                     key={value}
                     label={value}
-                    sx={{ backgroundColor: getTypeColor(value) }}
+                    sx={{
+                      backgroundColor: getTypeColor(value),
+                      color: "white",
+                    }}
                   />
                 ))}
               </Box>

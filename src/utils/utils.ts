@@ -50,7 +50,7 @@ export const getTypeColor = (typeName: string) => {
     case "dragon":
       return "#6F35FC";
     case "electric":
-      return "#F7D02C";
+      return "#d1b021";
     case "fairy":
       return "#D685AD";
     case "fighting":
@@ -66,7 +66,7 @@ export const getTypeColor = (typeName: string) => {
     case "ground":
       return "#E2BF65";
     case "ice":
-      return "#96D9D6";
+      return "#72979e";
     case "normal":
       return "#A8A77A";
     case "poison":
