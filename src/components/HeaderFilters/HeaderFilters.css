@@ -7,7 +7,6 @@
 }
 
 .filter2 {
-    width: 100%;
     opacity: 0;
     animation: fade-in 1.2s ease-in 0.2s forwards;
     -webkit-animation: fade-in 1.2s ease-in 0.2s forwards;

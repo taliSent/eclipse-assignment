@@ -19,18 +19,12 @@ import { PmUI } from "src/types/PokemonUI";
 import { getTypeColor } from "src/utils/utils";
 import { useMediaQuery, useTheme } from "@mui/material";
 
-const style = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-};
-
 function Row(props: { row: PmUI }) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const avatarSize = isMobile ? 50 : 95;
+  const avatarSize = isMobile ? 50 : 110;
   return (
     <>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -44,7 +38,7 @@ function Row(props: { row: PmUI }) {
           </IconButton>
         </TableCell>
         <TableCell align='center'>{row.name}</TableCell>
-        <TableCell align='center' sx={style} size='medium'>
+        <TableCell align='center' size='medium'>
           <Avatar
             sx={{
               width: avatarSize,
@@ -55,7 +49,11 @@ function Row(props: { row: PmUI }) {
           />
         </TableCell>
         <TableCell align='center'>
-          <Stack justifyContent='center' direction='row' spacing={1}>
+          <Stack
+            justifyContent='center'
+            direction='row'
+            spacing={isMobile ? 0 : 1}
+          >
             {row.types.map((type) => (
               <Chip
                 size='small'
@@ -68,7 +66,7 @@ function Row(props: { row: PmUI }) {
         </TableCell>
         <TableCell align='center'>
           {row.abilities.map((item) => (
-            <Box key={item} sx={{ margin: 1 }}>
+            <Box key={item} sx={{ paddingY: 1 }}>
               {item}
             </Box>
           ))}
@@ -78,9 +76,6 @@ function Row(props: { row: PmUI }) {
         <TableCell sx={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout='auto' unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Typography variant='h6' gutterBottom component='div'>
-                Details
-              </Typography>
               <Table size='small' aria-label='purchases'>
                 <TableHead>
                   <TableRow>
