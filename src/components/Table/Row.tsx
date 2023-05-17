@@ -46,7 +46,10 @@ function Row(props: { row: PmUI }) {
         <TableCell align='center'>{row.name}</TableCell>
         <TableCell align='center' sx={style} size='medium'>
           <Avatar
-            sx={{ width: avatarSize, height: avatarSize }}
+            sx={{
+              width: avatarSize,
+              height: avatarSize,
+            }}
             src={row.img}
             alt={`${row.name} photo`}
           />
