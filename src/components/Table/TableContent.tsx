@@ -15,10 +15,13 @@ import { PmUI } from "src/types/PokemonUI";
 import Row from "./Row";
 const styles = {
   ".MuiToolbar-root": {
-    paddingLeft: "4px",
+    padding: "0.5em",
+  },
+  ".MuiInputBase-root": {
+    marginRight: 0,
   },
   "&.MuiTablePagination-root": {
-    overflowX: "hidden",
+    overflowX: "visible",
   },
 };
 const TableContent: FC = () => {

@@ -4,7 +4,6 @@ import {
   IconButton,
   Collapse,
   Box,
-  Typography,
   Table,
   TableHead,
   TableBody,
@@ -24,10 +23,13 @@ function Row(props: { row: PmUI }) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const avatarSize = isMobile ? 50 : 110;
   return (
     <>
-      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+      <TableRow
+        sx={{
+          "& > *": { borderBottom: "unset" },
+        }}
+      >
         <TableCell>
           <IconButton
             aria-label='expand row'
@@ -38,11 +40,12 @@ function Row(props: { row: PmUI }) {
           </IconButton>
         </TableCell>
         <TableCell align='center'>{row.name}</TableCell>
-        <TableCell align='center' size='medium'>
+        <TableCell align='center' padding='none'>
           <Avatar
             sx={{
-              width: avatarSize,
-              height: avatarSize,
+              width: 40,
+              height: 40,
+              margin: "0 auto",
             }}
             src={row.img}
             alt={`${row.name} photo`}

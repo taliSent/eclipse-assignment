@@ -41,6 +41,7 @@ const HeaderFilters: FC = () => {
           <TextField
             onChange={handleChangeInput}
             variant='outlined'
+            sx={{ width: "100%" }}
             placeholder='Pikachu'
             InputProps={{
               startAdornment: (
