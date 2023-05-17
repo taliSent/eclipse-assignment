@@ -41,7 +41,7 @@ const TableContent: FC = () => {
             <TableCell align='center'>Name</TableCell>
             <TableCell align='center'>Avatar</TableCell>
             <TableCell align='center'>Type</TableCell>
-            <TableCell align='center'>Species</TableCell>
+            <TableCell align='center'>Abilities</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -59,7 +59,6 @@ const TableContent: FC = () => {
         onRowsPerPageChange={handlePageSizeChange}
         size='small'
         sx={styles}
-        // sx={{ overflowX: "hidden" }}
       />
     </TableContainer>
   );

@@ -17,11 +17,20 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { PmUI } from "src/types/PokemonUI";
 import { getTypeColor } from "src/utils/utils";
+import { useMediaQuery, useTheme } from "@mui/material";
+
+const style = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
 
 function Row(props: { row: PmUI }) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const avatarSize = isMobile ? 50 : 95;
   return (
     <>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -35,11 +44,12 @@ function Row(props: { row: PmUI }) {
           </IconButton>
         </TableCell>
         <TableCell align='center'>{row.name}</TableCell>
-        <TableCell
-          align='center'
-          sx={{ display: "flex", justifyContent: "center" }}
-        >
-          <Avatar src={row.img} alt={`${row.name} photo`} />
+        <TableCell align='center' sx={style} size='medium'>
+          <Avatar
+            sx={{ width: avatarSize, height: avatarSize }}
+            src={row.img}
+            alt={`${row.name} photo`}
+          />
         </TableCell>
         <TableCell align='center'>
           <Stack justifyContent='center' direction='row' spacing={1}>
@@ -53,7 +63,13 @@ function Row(props: { row: PmUI }) {
             ))}
           </Stack>
         </TableCell>
-        <TableCell align='center'>{row.species}</TableCell>
+        <TableCell align='center'>
+          {row.abilities.map((item) => (
+            <Box key={item} sx={{ margin: 1 }}>
+              {item}
+            </Box>
+          ))}
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell sx={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -65,20 +81,14 @@ function Row(props: { row: PmUI }) {
               <Table size='small' aria-label='purchases'>
                 <TableHead>
                   <TableRow>
-                    <TableCell align='center'>Forms</TableCell>
-                    <TableCell align='center'>Abilities</TableCell>
+                    <TableCell align='center'>Height</TableCell>
+                    <TableCell align='center'>Weight</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   <TableRow key={row.id}>
-                    <TableCell align='center'>{row.forms.join(", ")}</TableCell>
-                    <TableCell align='center'>
-                      {row.abilities.map((item) => (
-                        <Box key={item} sx={{ margin: 1 }}>
-                          {item}
-                        </Box>
-                      ))}
-                    </TableCell>
+                    <TableCell align='center'>{row.height}</TableCell>
+                    <TableCell align='center'>{row.weight}</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
