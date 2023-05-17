@@ -12,7 +12,7 @@ const config = {
   },
   output: {
     filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "dist"),
   },
   devServer: {
     open: true,
