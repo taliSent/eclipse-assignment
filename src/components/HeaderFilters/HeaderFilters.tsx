@@ -36,10 +36,9 @@ const HeaderFilters: FC = () => {
   return (
     <Box>
       <Stack direction='column' spacing={2}>
-        <Box className='filter1'>
+        <div className='filter1'>
           <InputLabel id='demo-multiple-chip-label'>Search by name</InputLabel>
           <TextField
-            sx={{ width: "100%" }}
             onChange={handleChangeInput}
             variant='outlined'
             placeholder='Pikachu'
@@ -52,8 +51,8 @@ const HeaderFilters: FC = () => {
             }}
             inputProps={{ "aria-label": "search by name" }}
           />
-        </Box>
-        <Box className='filter2'>
+        </div>
+        <div className='filter2'>
           <InputLabel id='demo-multiple-chip-label'>Select by type</InputLabel>
           <Select
             labelId='demo-multiple-chip-label'
@@ -88,7 +87,7 @@ const HeaderFilters: FC = () => {
                 </MenuItem>
               ))}
           </Select>
-        </Box>
+        </div>
       </Stack>
     </Box>
   );
