@@ -1,6 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 import { PmUI } from "src/types/PokemonUI";
+import { filterCallback } from "src/utils/utils";
 
 export const selectPms = (state: RootState) => state.pmListReducer.pmsUI;
 export const selectPage = (state: RootState) =>
@@ -12,13 +13,9 @@ export const selectFilteredPms = createSelector(
   (state: RootState) => state.pmListReducer,
   ({ pmsUI, search }) => {
     const { byName, byTypes } = search;
-    const filteredPms = pmsUI.filter((pm: PmUI) => {
-      const isNameMatch = pm.name.toLowerCase().includes(byName.toLowerCase());
-      const isTypeMatch =
-        byTypes.length === 0 || pm.types.some((type) => byTypes.includes(type));
-
-      return isNameMatch && isTypeMatch;
-    });
+    const filteredPms = pmsUI.filter((pm: PmUI) =>
+      filterCallback(pm, byName, byTypes)
+    );
     return filteredPms;
   }
 );

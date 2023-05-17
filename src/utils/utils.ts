@@ -2,8 +2,7 @@ import { Pokemon } from "src/types/Pokemon";
 import { PmUI } from "src/types/PokemonUI";
 
 export const extractMainInfo = (pokemon: Pokemon): PmUI => {
-  const { id, name, sprites, types, abilities, height, weight,  } =
-    pokemon;
+  const { id, name, sprites, types, abilities, height, weight } = pokemon;
   const pm = {
     id,
     name,
@@ -29,6 +28,13 @@ export const debounce = (f: () => void, time: number) => {
       timeoutId = setTimeout(functionCall, time, ...arg);
     }
   };
+};
+
+export const filterCallback = (pm: PmUI, byName: string, byTypes: string[]) => {
+  const isNameMatch = pm.name.toLowerCase().includes(byName.toLowerCase());
+  const isTypeMatch =
+    byTypes.length === 0 || pm.types.some((type) => byTypes.includes(type));
+  return isNameMatch && isTypeMatch;
 };
 
 export const sortTypes = (a: PmTypeT, b: PmTypeT) => {

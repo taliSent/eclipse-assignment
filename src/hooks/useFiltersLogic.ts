@@ -1,7 +1,7 @@
 import { SelectChangeEvent } from "@mui/material";
 import { ChangeEvent, FC, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useGetTypesQuery } from "src/api/useGetPmApi";
+import { useGetTypesQuery } from "src/api/useGetTypes";
 import { filterByName, filterByType } from "src/state/actions";
 import { debounce } from "src/utils/utils";
 

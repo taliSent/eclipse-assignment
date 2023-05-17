@@ -1,15 +1,13 @@
-# 🚀 Welcome to your new awesome project!
+Thank you for being interested in this tiny pokemon project
 
-This project has been created using **webpack-cli**, you can now run
-
+Install dependencies
 ```
-npm run build
-```
-
-or
-
-```
-yarn build
+npm i
 ```
 
-to bundle your application
+Run the app
+```
+npm run serve
+```
+
+

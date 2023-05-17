@@ -4,7 +4,7 @@ import { FIRST_PAGE } from "src/constants";
 import { fetchPms, fetchPmsError, fetchIsLoading } from "src/state/actions";
 import { PmUI } from "src/types/PokemonUI";
 import { extractMainInfo } from "src/utils/utils";
-import { BASE_URL } from "../api/useGetPmApi";
+import { BASE_URL } from "../api/useGetTypes";
 
 export const fetchPmsThunk =
   (dispatch: Dispatch<AnyAction>) => async (totalRows: number) => {
