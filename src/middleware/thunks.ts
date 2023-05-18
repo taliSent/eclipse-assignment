@@ -13,11 +13,12 @@ export const fetchPmsThunk =
       const requests: Promise<PmUI>[] = [];
       for (let id = FIRST_PAGE + 1; id <= totalRows; id++) {
         requests.push(
-          fetch(`${BASE_URL}/pokemon/${id}`)
+          fetch(`${BASE_URL}/pokemon/${id}`, {
+            headers: {
+              "User-Agent": "cheese",
+            },
+          })
             .then((response) => {
-              if (!response.ok) {
-                throw new Error("Failed to fetch Pokemon data");
-              }
               return response.json();
             })
             .then((data) => extractMainInfo(data))
