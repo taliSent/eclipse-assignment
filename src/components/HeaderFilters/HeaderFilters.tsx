@@ -43,6 +43,7 @@ const HeaderFilters: FC = () => {
             variant='outlined'
             sx={{ width: "100%" }}
             placeholder='Pikachu'
+            data-testid='search-by-name'
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>

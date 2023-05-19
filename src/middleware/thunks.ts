@@ -1,34 +1,25 @@
-import { AnyAction } from "@reduxjs/toolkit";
-import { Dispatch } from "react";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import { FIRST_PAGE } from "src/constants";
-import { fetchPms, fetchPmsError, fetchIsLoading } from "src/state/actions";
 import { PmUI } from "src/types/PokemonUI";
 import { extractMainInfo } from "src/utils/utils";
 import { BASE_URL } from "../api/useGetTypes";
 
-export const fetchPmsThunk =
-  (dispatch: Dispatch<AnyAction>) => async (totalRows: number) => {
-    dispatch(fetchIsLoading(true));
-    try {
-      const requests: Promise<PmUI>[] = [];
-      for (let id = FIRST_PAGE + 1; id <= totalRows; id++) {
-        requests.push(
-          fetch(`${BASE_URL}/pokemon/${id}`, {
-            headers: {
-              "User-Agent": "cheese",
-            },
-          })
-            .then((response) => {
-              return response.json();
-            })
-            .then((data) => extractMainInfo(data))
-        );
-      }
+const getPmById = (id: number) => {
+  return fetch(`${BASE_URL}/pokemon/${id}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => extractMainInfo(data));
+};
 
-      const data = await Promise.all(requests);
-      dispatch(fetchPms(data));
-      dispatch(fetchIsLoading(false));
-    } catch (error) {
-      if (error instanceof Error) dispatch(fetchPmsError(error.message));
+export const fetchAllPms = createAsyncThunk(
+  "pm/fetchAllPms",
+  async (totalRows: number) => {
+    const requests: Promise<PmUI>[] = [];
+    for (let id = FIRST_PAGE + 1; id <= totalRows; id++) {
+      requests.push(getPmById(id));
     }
-  };
+    const data = await Promise.all(requests);
+    return data;
+  }
+);

@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchPmsThunk } from "src/middleware/thunks";
+import { fetchAllPms } from "src/middleware/thunks";
 import { TOTAL_ROWS } from "src/constants";
+import { AppDispatch } from "src/state/store";
 
 const useAppLogic = () => {
-  const dispatch = useDispatch();
-  const fetchInitial = fetchPmsThunk(dispatch);
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    fetchInitial(TOTAL_ROWS);
+    dispatch(fetchAllPms(TOTAL_ROWS));
   }, []);
 
   return {};

@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { pmListReducer } from "./reducer";
+import { pmListReducer, fetchPmReducer } from "./reducer";
 import { pmApi } from "../api/useGetTypes";
 
 const store = configureStore({
   reducer: {
     [pmApi.reducerPath]: pmApi.reducer,
     pmListReducer: pmListReducer,
+    fetchPmReducer: fetchPmReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(pmApi.middleware),

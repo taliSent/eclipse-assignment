@@ -1,17 +1,19 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { RootState } from "./store";
 import { PmUI } from "src/types/PokemonUI";
 import { filterCallback } from "src/utils/utils";
+import { RootState } from "./store";
 
-export const selectPms = (state: RootState) => state.pmListReducer.pmsUI;
+export const selectPms = (state: RootState) => state.fetchPmReducer.pmsUI;
 export const selectPage = (state: RootState) =>
   state.pmListReducer.pagination.page;
 export const selectPerPage = (state: RootState) =>
   state.pmListReducer.pagination.perPage;
 
 export const selectFilteredPms = createSelector(
-  (state: RootState) => state.pmListReducer,
-  ({ pmsUI, search }) => {
+  (state: RootState) => state.fetchPmReducer.pmsUI,
+  (state: RootState) => state.pmListReducer.search,
+  (pmsUI, search) => {
+    // const { pmsUI } = state.fetchPmReducer;
     const { byName, byTypes } = search;
     const filteredPms = pmsUI.filter((pm: PmUI) =>
       filterCallback(pm, byName, byTypes)
@@ -41,5 +43,5 @@ export const selectTotalPages = createSelector(
 );
 
 export const selectIsLoading = (state: RootState) =>
-  state.pmListReducer.isLoading;
-export const selectError = (state: RootState) => state.pmListReducer.error;
+  state.fetchPmReducer.isLoading;
+export const selectError = (state: RootState) => state.fetchPmReducer.error;
