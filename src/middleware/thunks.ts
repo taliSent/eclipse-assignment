@@ -6,9 +6,7 @@ import { BASE_URL } from "../api/useGetTypes";
 
 const getPmById = (id: number) => {
   return fetch(`${BASE_URL}/pokemon/${id}`)
-    .then((response) => {
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => extractMainInfo(data));
 };
 

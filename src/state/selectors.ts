@@ -8,12 +8,11 @@ export const selectPage = (state: RootState) =>
   state.pmListReducer.pagination.page;
 export const selectPerPage = (state: RootState) =>
   state.pmListReducer.pagination.perPage;
-
+//apply filters to the fetched list
 export const selectFilteredPms = createSelector(
   (state: RootState) => state.fetchPmReducer.pmsUI,
   (state: RootState) => state.pmListReducer.search,
   (pmsUI, search) => {
-    // const { pmsUI } = state.fetchPmReducer;
     const { byName, byTypes } = search;
     const filteredPms = pmsUI.filter((pm: PmUI) =>
       filterCallback(pm, byName, byTypes)
@@ -21,6 +20,7 @@ export const selectFilteredPms = createSelector(
     return filteredPms;
   }
 );
+//apply pagination to the filtered list
 export const selectSlicedPms = createSelector(
   (state: RootState) => state.pmListReducer,
   selectFilteredPms,
@@ -32,6 +32,7 @@ export const selectSlicedPms = createSelector(
     return slicedPms;
   }
 );
+//derive totalPages's value
 export const selectTotalPages = createSelector(
   (state: RootState) => state.pmListReducer,
   selectFilteredPms,

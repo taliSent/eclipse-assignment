@@ -66,7 +66,7 @@ const pmSlice = createSlice({
       })
       .addCase(fetchAllPms.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload ? "Unable to fetch data" : undefined;
+        state.error = "Unable to fetch data";
       })
       .addCase(fetchAllPms.pending, (state, action) => {
         state.isLoading = true;
